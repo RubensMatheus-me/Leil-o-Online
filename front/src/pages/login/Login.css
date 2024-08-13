@@ -1,0 +1,22 @@
+.card-elements,
+.link-button-register {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    text-decoration: none;
+}
+
+.card {
+    background-color: #faf7f7;
+    box-shadow: 5px 5px 5px 5px 5px #868686;
+}
+
+.link-recovery-password {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+.login-page {
+    background-color: #008cff;
+}

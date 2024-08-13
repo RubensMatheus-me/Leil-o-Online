@@ -1,10 +1,28 @@
 import React from "react";
-import './Login.css'
+import './Login.css';
+import '../styles/Card.css';
+import { Card } from 'primereact/card';
+import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
+import { Button } from 'primereact/button';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div>
-            <h1>Página Login</h1>
+        <div className="login-page">
+            <Card className = "card" title="Login">
+                <div className="card-elements">
+                    <label htmlFor="email">Email</label>
+                    <InputText />
+                    <label htmlFor="senha">Senha</label>
+                    <Password feedback={false} toggleMask /> 
+                    <Button className="button-login" label="Login"/>
+                    <Link className= "link-button-register" to="/register" >
+                        <Button label="Cadastro"/>
+                    </Link> 
+                    <Link className="link-recovery-password" to="/recoveryPassword"> Recuperar Senha </Link>
+                </div>
+            </Card>
         </div>
     );
 }
