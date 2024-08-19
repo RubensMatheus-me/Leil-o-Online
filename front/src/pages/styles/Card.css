@@ -1,16 +1,25 @@
-.card,
-.p-card .p-card-title {
+.container {
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
-    margin: 0 auto;
-
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    width: 100%;
 }
 
 .card {
-    width: 100vh;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    max-width: 400px;  
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    background: #fff;
+}
+
+.password-login input {
+    box-sizing: border-box;
+    width: 100%;
+}
+.p-password {
+    position: relative;
+    display: block;
 }

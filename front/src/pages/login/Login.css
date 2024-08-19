@@ -3,20 +3,20 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 100%;
     text-decoration: none;
-}
-
-.card {
-    background-color: #faf7f7;
-    box-shadow: 5px 5px 5px 5px 5px #868686;
 }
 
 .link-recovery-password {
     display: flex;
     justify-content: center;
     text-decoration: none;
+    width: 100%;
 }
-.login-page {
-    background-color: #008cff;
+.password-input input {
+    box-sizing: border-box;
+    width: 100%;
+}
+.p-password {
+    position: relative;
+    display: block;
 }

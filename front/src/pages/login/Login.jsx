@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div className="login-page">
+        <div className="container">
             <Card className = "card" title="Login">
                 <div className="card-elements">
                     <label htmlFor="email">Email</label>
                     <InputText />
                     <label htmlFor="senha">Senha</label>
-                    <Password feedback={false} toggleMask /> 
+                    <Password className="password-input" feedback={false} toggleMask /> 
                     <Button className="button-login" label="Login"/>
                     <Link className= "link-button-register" to="/register" >
                         <Button label="Cadastro"/>
