@@ -18,7 +18,7 @@ const RecoveryPassword = () => {
 
     const handleRecoveryPassword = () => {
         if (!email) {
-            setError("os email deve ser preenchido!");
+            setError("O email deve ser preenchido!");
             return;
         }
         setError("");
@@ -34,7 +34,9 @@ const RecoveryPassword = () => {
                     
                     {error && <p style={{ color: 'red' }}>{error}</p>}
 
-                    <Button label="Enviar" onClick={handleRecoveryPassword} />
+                    <Link className="link-button-login" to="/recoveryPassword/code" >
+                        <Button label="Enviar" onCLick={handleRecoveryPassword} />
+                    </Link> 
                     <Link className="link-button-login" to="/login" >
                         <Button label="Voltar" />
                     </Link> 

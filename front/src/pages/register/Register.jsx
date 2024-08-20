@@ -57,9 +57,14 @@ const Register = () => {
         }
         if (!username || !email || !password || !confirmPassword) {
             setError("Todos os campos devem ser preenchidos!");
+            <InputText invalid/>
             return;
         }
-        setError("");
+        setError("");   
+
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
+
         alert("registro realizado com sucesso");
     }
 
@@ -79,7 +84,8 @@ const Register = () => {
                     <Password 
                     className="password-input" 
                     value={password}
-                    feedback={false}
+                    header = {""}
+                        footer={["Regras\n"] ["ds"]}
                     onChange={handlePasswordChange}
                     toggleMask/>
 
@@ -94,6 +100,9 @@ const Register = () => {
                     {error && <p style={{ color: 'red' }}>{error}</p>}
 
                     <div className="password-feedback">
+                        <p>
+                            A senha deve conter:
+                        </p>
                         <p style={{ color: validateInput.case ? 'green' : 'red' }}>
                                 {validateInput.case ? '✔' : '✖'} Deve conter letras maiúsculas e minúsculas
                             </p>
