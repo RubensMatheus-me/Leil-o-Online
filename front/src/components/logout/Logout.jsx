@@ -1,6 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import { Button } from 'primereact/button';
+import './Logout.css';
 
 const Logout = () => {
     const navigate = useNavigate();
@@ -14,8 +15,12 @@ const Logout = () => {
     }
 
     return (
+        
         <>
-        <Button className = "logout-button" label = "Logout" onClick = {logout}/>
+        <div className="button">
+            <Button className="logout-button" label="Logout" onClick={logout} />
+        </div>
+        
         </>
     );
 }

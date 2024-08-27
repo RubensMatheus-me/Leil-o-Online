@@ -1,12 +1,15 @@
 import React from "react";
 import "./Header.css";
 import Sidebar from "../../components/sidebar/Sidebar";
+import Logout from "../../components/logout/Logout";
 
 const Header = () => {
     return (
         <div className="header">
             <Sidebar className="sidebar"/>
-            <h1>Menu</h1>
+            <Logout className="logout-button" />
+
+            
         </div>
     );
 }

@@ -1,18 +1,21 @@
 import React from "react";
 import "./Home.css";    
-
-
-import Logout from "../../components/logout/Logout";
-import Sidebar from "../../components/sidebar/Sidebar";
-
+import {useTranslation} from "react-i18next";
 
 const Home = () => {
+    const {t,i18n} = useTranslation();
+    
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language);
+    }
 
     return (
         <div>
-            <h1>Página inicial</h1>
+            <h1>{t('welcome')}</h1>
+            <button onClick={() => changeLanguage('en')}>English</button>
+            <button onClick={() => changeLanguage('pt')}>Português</button>
             <div>
-                <Logout className = "logout-button"/>
+                
             </div>
         </div>
     );

@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
 import "./Register.css";
 import '../styles/CenteredElementsCard.css';
+import '../styles/DefaultNotification.css';
 
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Messages } from 'primereact/messages';
 
 const Register = () => {
@@ -17,20 +18,20 @@ const Register = () => {
         specialChar: false
     });
 
-    const msgs = useRef(null);
-
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
-
     const [submitted, setSubmitted] = useState(false);
 
+    const msgs = useRef(null);
+    const navigate = useNavigate(); // Importa e usa o hook useNavigate
+
     const validatePassword = (password) => {
-        const hasUpperCase = RegExp(/^(?=.*[A-Z]).+$/);
-        const hasLowerCase = RegExp(/^(?=.*[a-z]).+$/);
-        const hasNumber = RegExp(/^(?=.*[0-9]).+$/);
-        const hasSpecialChar = RegExp(/^(?=.*[!@#$%^&*(),.?":{}|<>])/);
+        const hasUpperCase = /^(?=.*[A-Z]).+$/;
+        const hasLowerCase = /^(?=.*[a-z]).+$/;
+        const hasNumber = /^(?=.*[0-9]).+$/;
+        const hasSpecialChar = /^(?=.*[!@#$%^&*(),.?":{}|<>])/;
         const length = password.length >= 6;
 
         setValidateInput({
@@ -75,6 +76,7 @@ const Register = () => {
             return;
         }
 
+        // Armazena os dados e exibe mensagem de sucesso
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
 
@@ -84,13 +86,19 @@ const Register = () => {
             detail: 'Registro realizado com sucesso!',
             sticky: true,
         });
+
+        // Adiciona o delay de 1,5 segundos antes de navegar
+        setTimeout(() => {
+            navigate("/login"); // Redireciona para a página de login
+        }, 1500); // 1500 milissegundos = 1,5 segundos
     };
 
     return (
         <div className="container">
-            <div><Messages ref={msgs} /></div>
+            <div className="notification">
+                <Messages className="notification-message" ref={msgs} />
+            </div>
             <Card className="card" title="Registro">
-
                 <div className="card-elements">
                     <label htmlFor="username">Nome</label>
                     <InputText
@@ -147,8 +155,6 @@ const Register = () => {
                         toggleMask
                         invalid={submitted && !confirmPassword}
                     />
-
-                    
 
                     <Button className="button-login" label="Cadastrar" onClick={handleRegister} />
 

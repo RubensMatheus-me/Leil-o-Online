@@ -1,4 +1,7 @@
-.logout-button {
+
+.button {
     float: right;
-    z-index: 1;
+    bottom: 45px;
+    position: relative;
+
 }

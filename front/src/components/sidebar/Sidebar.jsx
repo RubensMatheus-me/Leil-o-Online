@@ -8,12 +8,12 @@ export default function BasicDemo() {
     const [visible, setVisible] = useState(false);
 
     return (
-        <div className="card flex justify-content-center">
+        <div className="out-sidebar">
             <Sidebar className="sidebar"  visible={visible} onHide={() => setVisible(false)}>
                 <h2>Sidebar</h2>
                 
             </Sidebar>
-            <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+            <Button icon="pi pi-align-justify" onClick={() => setVisible(true)} />
         </div>
     )
 }
