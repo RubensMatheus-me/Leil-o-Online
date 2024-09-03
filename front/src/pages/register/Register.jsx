@@ -79,6 +79,7 @@ const Register = () => {
         // Armazena os dados e exibe mensagem de sucesso
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
+        localStorage.setItem("username", username);
 
         msgs.current.show({
             severity: 'success',
@@ -98,7 +99,7 @@ const Register = () => {
             <div className="notification">
                 <Messages className="notification-message" ref={msgs} />
             </div>
-            <Card className="card" title="Registro">
+            <Card className="default-card" title="Registro">
                 <div className="card-elements">
                     <label htmlFor="username">Nome</label>
                     <InputText

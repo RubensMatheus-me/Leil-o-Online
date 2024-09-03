@@ -25,10 +25,10 @@ const RecoveryPassword = () => {
         a = String(a);
         a = a.substring(0, 4);
         console.log(a);
-        setCode(a);
-
+        setCode(a.toString());
         localStorage.setItem("code", code);
     }
+
 
     const handleRecoveryPassword = () => {
         msgs.current.clear();
@@ -62,7 +62,7 @@ const RecoveryPassword = () => {
             <div className="notification">
                 <Messages className="notification-message" ref={msgs} />
             </div>
-            <Card className="card" title="Recuperar Senha">
+            <Card className="default-card" title="Recuperar Senha">
                 <div className="card-elements">      
                     <label htmlFor="email">Email</label>
                     <InputText 

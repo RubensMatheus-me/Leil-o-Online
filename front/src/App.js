@@ -8,6 +8,7 @@ import Register from './pages/register/Register';
 import RecoveryPassword from './pages/recovery/RecoveryPassword';
 import PrivateRouter from './components/PrivateRouter';
 import RecoveryCode from './pages/recoveryCode/RecoveryCode';
+import Profile from './pages/profile/Profile';
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
 
           <Route element={<PrivateRouter/>}>
             <Route path='/' element={<DefaultLayout><Home/></DefaultLayout>}/>
+            <Route path='/user/profile' element={<DefaultLayout><Profile /></DefaultLayout>} />
             
           </Route>
+
           <Route path='/login' element={<SimpleLayout><Login/></SimpleLayout>} />
           <Route path='/register' element={<SimpleLayout><Register/></SimpleLayout>} />
           <Route path='/recoveryPassword' element={<SimpleLayout><RecoveryPassword/></SimpleLayout>} />

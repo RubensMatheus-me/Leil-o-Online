@@ -1,6 +1,6 @@
 import React from "react";
 import './Login.css';
-import '../styles/Card.css';
+import '../styles/DefaultCard.css';
 import '../styles/DefaultNotification.css';
 
 import { Card } from 'primereact/card';
@@ -74,7 +74,7 @@ const Login = () => {
             <div className="notification">
                 <Messages className="notification-message" ref={msgs} />
             </div>
-            <Card className = "card" title="Login">
+            <Card className = "default-card" title="Login">
                 <div className="card-elements">
                     <label htmlFor="email">E-mail</label>
                     <InputText 

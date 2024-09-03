@@ -1,14 +1,13 @@
 import React from "react";
 import "./Header.css";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Logout from "../../components/logout/Logout";
+
+import TemplateDemo from "../menubar/Menubar";
+
 
 const Header = () => {
     return (
         <div className="header">
-            <Sidebar className="sidebar"/>
-            <Logout className="logout-button" />
-
+            <TemplateDemo/>
             
         </div>
     );

@@ -14,14 +14,16 @@ const RecoveryCode = () => {
 
     const navigate = useNavigate();
 
-    const [recoveryCode, setRecoveryCode] = useState("");
+    const [recoveryCode, setRecoveryCode] = useState({code :""});
     const [submit, setSubmit] = useState(false);
 
+    /*
     const handleChange = (input) => {
 
-        const { name, value } = input.target;
-        setRecoveryCode(prevRecoveryCode => ({ ...prevRecoveryCode, [name]: value }));
+        const { code, value } = input.target;
+        setRecoveryCode(prevRecoveryCode => ({ ...prevRecoveryCode, [code]: value }));
     }
+    */
 
     const codeHandler = () => {
         setSubmit(true);
@@ -37,7 +39,7 @@ const RecoveryCode = () => {
                 sticky: true,
             });
             return
-        } else if (codeRegistered == recoveryCode) {
+        } else if (codeRegistered === recoveryCode) {
             msgs.current.show({
                 severity: 'success',
                 summary: 'Successo',
@@ -62,14 +64,14 @@ const RecoveryCode = () => {
 
     return (
         <div className="container">
-            <Card className="card" title="Recuperar Senha">
+            <Card className="default-card" title="Recuperar Senha">
                 <div className="card-elements">
                     <label htmlFor="code" className="code">Código</label>
                     <div className="input-code">
                         <InputOtp 
                         className = "otp" 
                         integerOnly 
-                        onChange={handleChange}
+                        //onChange={handleChange}
                         invalid={submit && !recoveryCode}/>
                     </div>
                     <Button
