@@ -35,7 +35,7 @@ const AvatarSettings = () => {
     const items = [
         {
             label: null,
-            icon: <Avatar image="https://acdn.mitiendanube.com/stores/293/287/products/spiderman-sem-teia1-4935d2ffcb8595109215132953404008-1024-1024.webp  " shape="circle" />,
+            icon: <Avatar image="https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png" shape="circle" />,
             items: [
                 {
                     label: 'Perfil',

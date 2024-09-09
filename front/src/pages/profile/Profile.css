@@ -1,37 +1,150 @@
-/* Profile.css */
-
-.container {
+.profile-container {
     display: flex;
-    justify-content: space-between;
-    /* Espaço entre os cards */
-    gap: 20px;
-    /* Ajuste o valor conforme necessário */
+    justify-content: center; 
+    align-items: center; 
+    min-height: calc(100vh - 100px);
     padding: 20px;
-    /* Espaço interno da container */
 }
 
-.cardAvatar,
-.cardInformations {
-    flex: 1;
-    /* Faz com que ambos os cards ocupem o mesmo espaço */
+.main-card {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; 
+    align-items: center; 
     padding: 20px;
-    /* Espaço interno dos cards */
+    width: 100%;
+    max-width: 1200px; 
+    box-sizing: border-box; 
+}
+
+.image {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 20px; 
 }
 
 .avatarImage {
-    margin-bottom: 10px;
-    /* Espaço entre o avatar e o label */
+    margin-bottom: 40px; 
 }
 
-.cardInformations {
-    gap: 10px;
-    /* Espaço entre o label e o campo de entrada */
+.file-input-container {
+    margin-top: 10px; 
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
 }
 
-.cardInformations label {
-    margin-bottom: 10px;
-    
+.file-input-container input {
+    margin-top: 10px; 
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+    position: relative; 
+}
+
+.file-input-container input {
+    display: none;
+}
+
+.upload-button {
+    cursor: pointer;
+    background-color: #007bff; 
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.separator {
+    width: 100%; 
+    background-color: #f0f0f0; 
+    padding: 10px; 
+    text-align: center; 
+    margin: 20px 0; 
+    font-weight: bold; 
+    border-radius: 5px; 
+}
+
+.user-info, .address {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    width: 100%; 
+}
+
+.user-info label, .address label {
+    text-align: left; 
+    margin-bottom: 10px; 
+}
+
+.info-values, .adress-va {
+    display: flex; 
+    flex-direction: row; 
+    gap: 10px; 
+    width: 100%; 
+    text-align: center;
+}
+
+.info-values p {
+    margin: auto;
+    font-weight: bold; 
+    white-space: nowrap; 
+    width: auto; 
+}
+
+.info-values .p-inputtext, .address .p-inputtext {
+    width: 100%; 
+}
+
+.image img {
+    width: 150%;
+    height: 150%;
+}
+
+
+.address-values {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    gap: 10px; 
+}
+
+.address-values p {
+    text-align: center;
+    margin: 0;
+}
+
+.address-values input {
+    width: 80%; 
+    max-width: 300px;
+}
+
+.save-button, .adress-button{
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.save-button {
+    float: right;
+}
+.adress-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
