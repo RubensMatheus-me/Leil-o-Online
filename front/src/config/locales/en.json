@@ -1,3 +1,62 @@
 {
-    
+    "home": {
+        "welcome": "Welcome to Auction of Yu-Gi-Oh! Cards",
+        "offers": "Offers available"
+    },
+
+    "header": {
+        "home": "Home",
+        "my-items": "My Items",
+        "search": "Search",
+        "profile": "Profile",
+        "logout": "Logout"
+    },
+
+    "login": {
+        "title": "Login",
+        "email": "E-mail",
+        "password": "Password",
+        "submit" : "Login",
+        "register": "Register",
+        "forgot-password": "Forgot password"
+    },
+
+    "my-items": {
+        "title": "My items",
+        "dashboard": "Dashboard",
+        "total-items": "Total items:",
+        "total-sold": "Total sold:",
+        "total-money": "Total revenue:",
+        "auction-items": "Auctioned items",
+        "add-items": "Add new items"
+    },
+
+    "profile": {
+        "welcome": "Welcome,",
+        "picture": "Insert profile picture",
+        "settings": "Settings",
+        "name": "Name:",
+        "email": "E-mail:",
+        "cpf": "CPF:",
+        "change-password": "Change password",
+        "actual-password": "Actual password:",
+        "new-password": "New password:",
+        "confirm-password": "Confirm new password:",
+        "adress": "Adress",
+        "locale": "Use my actual localization",
+        "cep": "CEP",
+        "street": "Street",
+        "city": "City",
+        "state": "State",
+        "save" : "Save changes",
+        "placeholder-name": "Enter your new name",
+        "placeholder-email": "Enter your new email",
+        "placeholder-cpf": "Enter your CPF",
+        "placeholder-cep": "Enter your CEP",
+        "placeholder-street": "Enter your street",
+        "placeholder-state": "Enter your state",
+        "placeholder-city": "Enter your city",
+        "error-message-cpf": "Invalid CPF",
+        "valid-message-cpf": "Valid CPF"
+    }
 }

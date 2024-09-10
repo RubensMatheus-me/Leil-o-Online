@@ -1,8 +1,63 @@
 {
-    "welcome":"Bem-vindo",
-    "login":"Entrar",
-    "password":"Senha",
-    "register":"Cadastro",
-    "forgotPassword":"Recuperar Senha",
-    "email": "E-mail"
+    "home" : {
+        "welcome" : "Bem vindo ao leilão de cartas Yu-Gi-Oh!",
+        "offers" : "Items disponíveis"
+    },
+
+    "header" : {
+        "home" : "Inicio",
+        "my-items" : "Meus items",
+        "search" : "Buscar",
+        "profile" : "Perfil",
+        "logout" : "Sair"
+    },
+
+    "login" : {
+        "title" : "Entrar",
+        "email" : "E-mail",
+        "password" : "Senha",
+        "submit" : "Enviar",
+        "register" : "Registro",
+        "forgot-password" : "Esqueci minha senha"
+    },
+    "my-items" : {
+        "title" : "Meus items",
+        "dashboard" : "Dashboard",
+        "total-items" : "Total itens:",
+        "total-sold" : "Total vendidos:",
+        "total-money" : "Receita total:",
+        "auction-items" : "Itens Leiloados",
+        "add-items" : "Adicionar novos items"
+    },
+
+    "profile": {
+        "welcome": "Bem-vindo,",
+        "picture": "Inserir foto de perfil",
+        "settings" : "Configurações",
+        "name" : "Nome",
+        "email" : "E-mail",
+        "cpf" : "CPF",
+        "change-password" : "Mudar senha",
+        "actual-password" : "Senha atual:",
+        "new-password" : "Nova senha:",
+        "confirm-password" : "Confirme a nova senha:",
+        "adress" : "Endereço",
+        "locale" : "Usar minha localização atual",
+        "cep" : "CEP",
+        "street" : "Rua",
+        "city" : "Cidade",
+        "state" : "Estado",
+        "save" : "Salvar alterações",
+        "placeholder-name" : "Digite seu novo nome",
+        "placeholder-email" : "Digite seu novo email",
+        "placeholder-cpf" : "Digite seu CPF",
+        "placeholder-cep" : "Digite deu CEP",
+        "placeholder-street" : "Digite a rua",
+        "placeholder-state" : "Digite o estado",
+        "placeholder-city" : "Digite a cidade",
+        "error-message-cpf" : "CPF inválido",
+        "valid-message-cpf" : "CPF válido"
+
+    }   
+    
 }

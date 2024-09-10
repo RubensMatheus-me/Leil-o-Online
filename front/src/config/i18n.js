@@ -7,9 +7,7 @@ import en from './locales/en.json';
 
 const resources = {
     en: {
-        translation: {
-            welcome: "Welcome",
-        },
+        translation: en,
     },
     pt: {
         translation: pt,

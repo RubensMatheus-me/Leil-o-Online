@@ -3,6 +3,7 @@ import { Menubar } from 'primereact/menubar';
 import { Avatar } from 'primereact/avatar';
 import { Badge } from 'primereact/badge';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import './AvatarSettings.css';
 
 import '../logout/Logout';
@@ -10,6 +11,7 @@ import Logout from '../logout/Logout';
 
 const AvatarSettings = () => {
     const navigate = useNavigate();
+    const { t, i18n } = useTranslation();
 
     const handleLogout = () => {
         localStorage.removeItem("email");
@@ -38,13 +40,13 @@ const AvatarSettings = () => {
             icon: <Avatar image="https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png" shape="circle" />,
             items: [
                 {
-                    label: 'Perfil',
+                    label: t('header.profile'),
                     icon: 'pi pi-user',
                     command: handleProfie,
                     template: itemRenderer
                 },  
                 {
-                    label: 'Sair',
+                    label: t('header.logout'),
                     command: handleLogout,
                     icon: 'pi pi-sign-in ',
                     template: itemRenderer

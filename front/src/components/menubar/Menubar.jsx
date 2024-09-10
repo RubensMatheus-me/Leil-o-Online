@@ -40,12 +40,12 @@ export default function TemplateDemo() {
 
     const items = [
         {
-            label: 'Inicio',
+            label: t('header.home'),
             icon: 'pi pi-home',
             command: handleHome,
         },
         {
-            label: 'Meus Items',
+            label: t('header.my-items'),
             icon: 'pi pi-star',
             command: handleMyItems,
         },
@@ -60,7 +60,7 @@ export default function TemplateDemo() {
     const end = (
         <div className='endBar'>
             <div className="flex align-items-center gap-2">
-                <InputText placeholder="Search" type="text" className="w-8rem sm:w-auto" />
+                <InputText placeholder={t('header.search')} type="text" className="w-8rem sm:w-auto" />
                 <AvatarSettings />
             </div>
         </div>
