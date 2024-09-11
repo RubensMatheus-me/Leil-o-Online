@@ -4,8 +4,9 @@ import './MyItems.css';
 import { Card } from 'primereact/card';
 import { useTranslation } from "react-i18next";
 
-const MyItems = () => {
+import dashboardImage from '../../components/assets/images/dashboard.png';
 
+const MyItems = () => {
     const [myItems, setMyItems] = useState([]);
     const [statistics, setStatistics] = useState({
         totalItems: 0,
@@ -14,19 +15,16 @@ const MyItems = () => {
     });
 
     useEffect(() => {
-       
         const storedItems = JSON.parse(localStorage.getItem('myItems')) || [];
         setMyItems(storedItems);
-        
-       
+
         const totalItems = storedItems.length;
         const totalSold = storedItems.filter(p => p.inventoryStatus !== 'INSTOCK').length;
-    
-       
+
         const totalRevenue = storedItems
             .filter(p => p.inventoryStatus !== 'INSTOCK')
             .reduce((acc, p) => acc + (parseFloat(p.price) || 0), 0);
-    
+
         setStatistics({
             totalItems,
             totalSold,
@@ -45,6 +43,8 @@ const MyItems = () => {
         <Card>
             <div className="my-items-container">
                 <h1>{t('my-items.title')}</h1>
+                
+                <img src={dashboardImage} alt="Dashboard Representation" className="dashboard-image" />
 
                 <div className="dashboard">
                     <h2>{t('my-items.dashboard')}</h2>
