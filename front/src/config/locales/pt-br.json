@@ -18,7 +18,9 @@
         "password" : "Senha",
         "submit" : "Enviar",
         "register" : "Registro",
-        "forgot-password" : "Esqueci minha senha"
+        "forgot-password" : "Esqueci minha senha",
+        "error-message-login": "Email ou senha incorretos!",
+        "sucess-message-login": "Dados corretos!"
     },
     "my-items" : {
         "title" : "Meus items",
@@ -58,6 +60,37 @@
         "error-message-cpf" : "CPF inválido",
         "valid-message-cpf" : "CPF válido"
 
-    }   
+    },   
+    "register" : {
+        "title" : "Cadastro",
+        "name" : "Nome:",
+        "email" : "E-mail:",
+        "password" : "Senha:",
+        "confirm-password" : "Confirmar senha:",
+        "register" : "Cadastrar",
+        "back" : "Voltar",
+        "placeholder-password-rules-choose" : "Escolha uma senha:",
+        "placeholder-password-rules-weak" : "Senha fraca:",
+        "placeholder-password-rules-medium" : "Senha média:",
+        "placeholder-password-rules-strong" : "Senha forte:",
+        "placeholder-password-rules" : "A senha deve conter:",
+        "placeholder-password-rules-footer-caracters" : "Deve conter letras maiúsculas e minúsculas",
+        "placeholder-password-rules-footer-number": "Deve conter pelo menos um número",
+        "placeholder-password-rules-footer-special-caracters" : "Deve conter pelo menos um caracter especial",
+        "placeholder-password-rules-footer-lenght" : "Deve ter pelo menos 6 caracteres "
+
+    },
+    "recovery-password" : {
+        "title" : "Recuperar senha",
+        "email" : "Email",
+        "submit" : "Enviar",
+        "back" : "Voltar"
+    },
+    "recovery-password-code" : {
+        "title" : "Recuperar senha",
+        "code" : "Código",
+        "submit" : "Enviar",
+        "back" : "Voltar"
+    }
     
 }

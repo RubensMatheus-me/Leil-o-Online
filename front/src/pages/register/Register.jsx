@@ -9,8 +9,12 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { Messages } from 'primereact/messages';
+import { useTranslation } from "react-i18next";
+
+import ButtonLanguage from "../../components/buttonLanguage/ButtonLanguage"; 
 
 const Register = () => {
+    const {t} = useTranslation();
     const [validateInput, setValidateInput] = useState({
         case: false,
         number: false,
@@ -76,7 +80,6 @@ const Register = () => {
             return;
         }
 
-        // Armazena os dados e exibe mensagem de sucesso
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
         localStorage.setItem("username", username);
@@ -88,10 +91,10 @@ const Register = () => {
             sticky: true,
         });
 
-        // Adiciona o delay de 1,5 segundos antes de navegar
+  
         setTimeout(() => {
-            navigate("/login"); // Redireciona para a página de login
-        }, 1500); // 1500 milissegundos = 1,5 segundos
+            navigate("/login");
+        }, 1500); 
     };
 
     return (
@@ -99,9 +102,12 @@ const Register = () => {
             <div className="notification">
                 <Messages className="notification-message" ref={msgs} />
             </div>
-            <Card className="default-card" title="Registro">
+            <Card className="default-card" title={t('register.title')}>
+                <div className="button-language">
+                    <ButtonLanguage/>
+                </div>
                 <div className="card-elements">
-                    <label htmlFor="username">Nome</label>
+                    <label htmlFor="username">{t('register.name')}</label>
                     <InputText
                         id="username"
                         value={username}
@@ -109,7 +115,7 @@ const Register = () => {
                         invalid={submitted && !username}
                     />
 
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">{t('register.email')}</label>
                     <InputText
                         id="email"
                         value={email}
@@ -117,26 +123,30 @@ const Register = () => {
                         invalid={submitted && !email}
                     />
 
-                    <label htmlFor="senha">Senha</label>
+                    <label htmlFor="senha">{t('register.password')}</label>
                     <Password
                         id="senha"
                         className="password-input"
                         value={password}
+                        promptLabel={t('register.placeholder-password-rules-choose')} 
+                        weakLabel={t('register.placeholder-password-rules-weak')} 
+                        mediumLabel={t('placeholder-password-rules-medium')} 
+                        strongLabel={t('placeholder-password-rules-strong')} 
                         header={null}
                         footer={
                             <div className="password-feedback">
-                                <p>A senha deve conter:</p>
+                                <p>{t('register.placeholder-password-rules')}:</p>
                                 <p style={{ color: validateInput.case ? 'green' : 'red' }}>
-                                    {validateInput.case ? '✔' : '✖'} Deve conter letras maiúsculas e minúsculas
+                                    {validateInput.case ? '✔' : '✖'} {t('register.placeholder-password-rules-footer-caracters')}
                                 </p>
                                 <p style={{ color: validateInput.number ? 'green' : 'red' }}>
-                                    {validateInput.number ? '✔' : '✖'} Deve conter pelo menos um número
+                                    {validateInput.number ? '✔' : '✖'} {t('register.placeholder-password-rules-footer-number')}
                                 </p>
                                 <p style={{ color: validateInput.specialChar ? 'green' : 'red' }}>
-                                    {validateInput.specialChar ? '✔' : '✖'} Deve conter pelo menos um caractere especial
+                                    {validateInput.specialChar ? '✔' : '✖'} {t('register.placeholder-password-rules-footer-special-caracters')}
                                 </p>
                                 <p style={{ color: validateInput.length ? 'green' : 'red' }}>
-                                    {validateInput.length ? '✔' : '✖'} Deve ter pelo menos 6 caracteres
+                                    {validateInput.length ? '✔' : '✖'} {t('register.placeholder-password-rules-footer-lenght')}
                                 </p>
                             </div>
                         }
@@ -146,7 +156,7 @@ const Register = () => {
                         invalid={submitted && !password}
                     />
 
-                    <label htmlFor="confirmarSenha">Confirmar Senha</label>
+                    <label htmlFor="confirmarSenha">{t('register.confirm-password')}</label>
                     <Password
                         id="confirmarSenha"
                         className="password-input"
@@ -157,10 +167,10 @@ const Register = () => {
                         invalid={submitted && !confirmPassword}
                     />
 
-                    <Button className="button-login" label="Cadastrar" onClick={handleRegister} />
+                    <Button className="button-login" label={t('register.register')} onClick={handleRegister} />
 
                     <Link className="link-button-login" to="/login">
-                        <Button label="Voltar" />
+                        <Button label={t('register.back')} />
                     </Link>
                 </div>
             </Card>

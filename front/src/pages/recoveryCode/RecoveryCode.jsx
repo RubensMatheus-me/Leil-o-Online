@@ -6,11 +6,17 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { InputOtp } from 'primereact/inputotp';
+import { useTranslation } from "react-i18next";
+
+
+import ButtonLanguage from "../../components/buttonLanguage/ButtonLanguage"; 
 
 
 
 const RecoveryCode = () => {
     const msgs = useRef(null);
+
+    const {t} = useTranslation();
 
     const navigate = useNavigate();
 
@@ -64,9 +70,12 @@ const RecoveryCode = () => {
 
     return (
         <div className="container">
-            <Card className="default-card" title="Recuperar Senha">
+            <Card className="default-card" title={t('recovery-password-code.title')}>
+                <div className="button-language">
+                    <ButtonLanguage />
+                </div>
                 <div className="card-elements">
-                    <label htmlFor="code" className="code">Código</label>
+                    <label htmlFor="code" className="code">{t('recovery-password-code.code')}</label>
                     <div className="input-code">
                         <InputOtp 
                         className = "otp" 
@@ -75,11 +84,11 @@ const RecoveryCode = () => {
                         invalid={submit && !recoveryCode}/>
                     </div>
                     <Button
-                    label="Enviar"
+                    label={t('recovery-password-code.submit')}
                     onClick={codeHandler}
                     />
-                    <Link className="link-button-login" to="/recoveryPassword" >
-                        <Button label="Voltar" />
+                    <Link className="link-button-login" to="/recovery-password" >
+                        <Button label={t('recovery-password-code.back')} />
                     </Link>
                 </div>
             </Card>

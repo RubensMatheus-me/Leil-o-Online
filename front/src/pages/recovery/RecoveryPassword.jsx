@@ -8,7 +8,9 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { Messages } from 'primereact/messages';
+import { useTranslation } from "react-i18next";
 
+import ButtonLanguage from "../../components/buttonLanguage/ButtonLanguage"; 
 
 
 
@@ -28,7 +30,7 @@ const RecoveryPassword = () => {
         setCode(a.toString());
         localStorage.setItem("code", code);
     }
-
+    const {t} = useTranslation();
 
     const handleRecoveryPassword = () => {
         msgs.current.clear();
@@ -51,7 +53,7 @@ const RecoveryPassword = () => {
             generateOTP();
 
             setTimeout(() => {
-                navigate("/recoveryPassword/code");
+                navigate("/recovery-password/code");
             }, 1500); 
         
 
@@ -62,9 +64,12 @@ const RecoveryPassword = () => {
             <div className="notification">
                 <Messages className="notification-message" ref={msgs} />
             </div>
-            <Card className="default-card" title="Recuperar Senha">
+            <Card className="default-card" title={t('recovery-password.title')}>
+                <div className="button-language">
+                    <ButtonLanguage />
+                </div>
                 <div className="card-elements">      
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">{t('recovery-password.email')}</label>
                     <InputText 
                         id="email"
                         type="email" 
@@ -73,12 +78,12 @@ const RecoveryPassword = () => {
                     />
                     <Button
                         className="button-recovery"
-                        label="Enviar"
+                        label={t('recovery-password.submit')}
                         onClick={handleRecoveryPassword}
                     />
                     
                     <Link className="link-button-login" to="/login" >
-                        <Button label="Voltar" />
+                        <Button label={t('recovery-password.back')} />
                     </Link> 
                 </div>
             </Card>

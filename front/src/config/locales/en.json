@@ -18,7 +18,9 @@
         "password": "Password",
         "submit" : "Login",
         "register": "Register",
-        "forgot-password": "Forgot password"
+        "forgot-password": "Forgot password",
+        "error-message-login": "Incorrect email or password!",
+        "sucess-message-login": "Correct values"
     },
 
     "my-items": {
@@ -58,5 +60,37 @@
         "placeholder-city": "Enter your city",
         "error-message-cpf": "Invalid CPF",
         "valid-message-cpf": "Valid CPF"
+    },
+
+    "register" : {
+        "title" : "Register",
+        "name" : "Name:",
+        "email" : "E-mail:",
+        "password" : "Password:",
+        "confirm-password" : "Confirm password:",
+        "register" : "Register",
+        "back" : "Back",
+        "placeholder-password-rules-choose" : "Choose password:",
+        "placeholder-password-rules-weak" : "Weak password:",
+        "placeholder-password-rules-medium" : "Medium password:",
+        "placeholder-password-rules-strong" : "Strong password:",
+        "placeholder-password-rules" : "The password must contain:",
+        "placeholder-password-rules-footer-caracters" : "Must contain uppercase and lowercase letters",
+        "placeholder-password-rules-footer-number": "Must contain at least one number",
+        "placeholder-password-rules-footer-special-caracters" : "Must contain at least one special character",
+        "placeholder-password-rules-footer-lenght" : "Must be at least 6 characters "
+
+    },
+    "recovery-password" : {
+        "title" : "Recover password",
+        "email" : "Email",
+        "submit" : "Submit",
+        "back" : "Back"
+    },
+    "recovery-password-code" : {
+        "title" : "Recover password",
+        "code" : "Code",
+        "submit" : "Submit",
+        "back" : "Back"
     }
 }
