@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { Messages } from 'primereact/messages';
 import ButtonLanguage from "../../components/buttonLanguage/ButtonLanguage"; 
+import PersonService from "../../services/PersonService";
 
 const Login = () => {
     const [user, setUser] = useState({ email: "", password: "" });
@@ -20,41 +21,61 @@ const Login = () => {
     const { t } = useTranslation();
     const [adminUser] = useState({ email: "admin", password: "admin" });
     const msgs = useRef(null);
+    const personService = new PersonService();
 
     const handleChange = (input) => {
         const { name, value } = input.target;
         setUser(prevUser => ({ ...prevUser, [name]: value }));
     }
 
-    const login = () => {
+    const login = async () => {
         msgs.current.clear();
         setSubmitted(true);
-        const emailRegistered = localStorage.getItem("email");
-        const passwordRegistered = localStorage.getItem("password");
+        //const emailRegistered = localStorage.getItem("email");
+        //const passwordRegistered = localStorage.getItem("password");
+        
 
-        if ((user.email === emailRegistered && user.password === passwordRegistered)
-            || (user.email === adminUser.email && user.password === adminUser.password)) {
-            msgs.current.show({
-                severity: 'success',
-                summary: 'Sucesso',
-                detail: t('login.sucess-message-login'),
-                sticky: true,
-            });
-            setTimeout(() => {
-                let token = "tokenBackend";
-                localStorage.setItem("token", token);
-                navigate("/");
-            }, 1500);
-        } else {
+        try {
+            const response = await personService.login(user);
+            let token = response.token;
+            localStorage.setItem("token", token);
+            localStorage.setItem("email", user.email);
+           
+        }catch {
             msgs.current.show({
                 severity: 'error',
                 summary: 'Erro',
                 detail: t('login.error-message-login'),
                 sticky: true,
             });
-            return;
         }
     }
+    /*
+    if ((user.email === emailRegistered && user.password === passwordRegistered)
+        || (user.email === adminUser.email && user.password === adminUser.password)) {
+
+        msgs.current.show({
+            severity: 'success',
+            summary: 'Sucesso',
+            detail: t('login.sucess-message-login'),
+            sticky: true,
+        });
+        setTimeout(() => {
+            let token = "tokenBackend";
+            localStorage.setItem("token", token);
+            navigate("/");
+        }, 1500);
+    } else {
+        msgs.current.show({
+            severity: 'error',
+            summary: 'Erro',
+            detail: t('login.error-message-login'),
+            sticky: true,
+        });
+        return;
+        */
+    
+
 
     return (
         <div className="container">
