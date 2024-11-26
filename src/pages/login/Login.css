@@ -1,0 +1,30 @@
+.card-elements,
+.link-button-register {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.link-recovery-password {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    width: 100%;
+}
+.password-input input {
+    box-sizing: border-box;
+    width: 100%;
+}
+.p-password {
+    position: relative;
+    display: block;
+}
+
+
+.button-language {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
