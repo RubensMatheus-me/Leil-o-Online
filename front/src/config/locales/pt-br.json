@@ -1,0 +1,96 @@
+{
+    "home" : {
+        "welcome" : "Bem vindo ao leilão de cartas Yu-Gi-Oh!",
+        "offers" : "Items disponíveis"
+    },
+
+    "header" : {
+        "home" : "Inicio",
+        "my-items" : "Meus items",
+        "search" : "Buscar",
+        "profile" : "Perfil",
+        "logout" : "Sair"
+    },
+
+    "login" : {
+        "title" : "Entrar",
+        "email" : "E-mail",
+        "password" : "Senha",
+        "submit" : "Enviar",
+        "register" : "Registro",
+        "forgot-password" : "Esqueci minha senha",
+        "error-message-login": "Email ou senha incorretos!",
+        "sucess-message-login": "Dados corretos!"
+    },
+    "my-items" : {
+        "title" : "Meus items",
+        "dashboard" : "Dashboard",
+        "total-items" : "Total itens:",
+        "total-sold" : "Total vendidos:",
+        "total-money" : "Receita total:",
+        "auction-items" : "Itens Leiloados",
+        "add-items" : "Adicionar novos items"
+    },
+
+    "profile": {
+        "welcome": "Bem-vindo,",
+        "picture": "Inserir foto de perfil",
+        "settings" : "Configurações",
+        "name" : "Nome",
+        "email" : "E-mail",
+        "cpf" : "CPF",
+        "change-password" : "Mudar senha",
+        "actual-password" : "Senha atual:",
+        "new-password" : "Nova senha:",
+        "confirm-password" : "Confirme a nova senha:",
+        "adress" : "Endereço",
+        "locale" : "Usar minha localização atual",
+        "cep" : "CEP",
+        "street" : "Rua",
+        "city" : "Cidade",
+        "state" : "Estado",
+        "save" : "Salvar alterações",
+        "placeholder-name" : "Digite seu novo nome",
+        "placeholder-email" : "Digite seu novo email",
+        "placeholder-cpf" : "Digite seu CPF",
+        "placeholder-cep" : "Digite deu CEP",
+        "placeholder-street" : "Digite a rua",
+        "placeholder-state" : "Digite o estado",
+        "placeholder-city" : "Digite a cidade",
+        "error-message-cpf" : "CPF inválido",
+        "valid-message-cpf" : "CPF válido"
+
+    },   
+    "register" : {
+        "title" : "Cadastro",
+        "name" : "Nome:",
+        "email" : "E-mail:",
+        "password" : "Senha:",
+        "confirm-password" : "Confirmar senha:",
+        "register" : "Cadastrar",
+        "back" : "Voltar",
+        "placeholder-password-rules-choose" : "Escolha uma senha:",
+        "placeholder-password-rules-weak" : "Senha fraca:",
+        "placeholder-password-rules-medium" : "Senha média:",
+        "placeholder-password-rules-strong" : "Senha forte:",
+        "placeholder-password-rules" : "A senha deve conter:",
+        "placeholder-password-rules-footer-caracters" : "Deve conter letras maiúsculas e minúsculas",
+        "placeholder-password-rules-footer-number": "Deve conter pelo menos um número",
+        "placeholder-password-rules-footer-special-caracters" : "Deve conter pelo menos um caracter especial",
+        "placeholder-password-rules-footer-lenght" : "Deve ter pelo menos 6 caracteres "
+
+    },
+    "recovery-password" : {
+        "title" : "Recuperar senha",
+        "email" : "Email",
+        "submit" : "Enviar",
+        "back" : "Voltar"
+    },
+    "recovery-password-code" : {
+        "title" : "Recuperar senha",
+        "code" : "Código",
+        "submit" : "Enviar",
+        "back" : "Voltar"
+    }
+    
+}

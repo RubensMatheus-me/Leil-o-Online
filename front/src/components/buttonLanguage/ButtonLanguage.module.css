@@ -1,0 +1,12 @@
+.language-switcher-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.language-switcher-button:hover {
+    background-color: #0056b3;
+}
