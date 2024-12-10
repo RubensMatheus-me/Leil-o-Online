@@ -1,5 +1,5 @@
 import BaseService from "./BaseService";
-import { handleApiError } from "./errorHandler";
+import HandleApiError from "../handler/HandleApiError";
 
 class PersonService extends BaseService {
     constructor() {
@@ -11,44 +11,47 @@ class PersonService extends BaseService {
             const response = await apiCall();
             return response.data;
         } catch (error) {
-            throw new Error(handleApiError(error)); 
+            console.error("API Error: ", error);
+            throw new Error(HandleApiError(error));
         }
     }
 
-
     async login(credentials) {
+        console.log(`${this.endpoint}/login`);
         return await this.requestHandler(() =>
-            this.api.post(`${this.endPoint}/login`, credentials)
+            this.api.post(`${this.endpoint}/login`, credentials)
         );
     }
 
     async create(personData) {
+        console.log(`${this.endpoint}`);
         return await this.requestHandler(() =>
-            this.api.post(`${this.endPoint}/create`, personData)
+            this.api.post(`${this.endpoint}`, personData)
         );
     }
 
     async activateUser(token) {
         return await this.requestHandler(() =>
-            this.api.get(`${this.endPoint}/activate`, { params: { token } })
+            this.api.get(`${this.endpoint}/activate`, { params: { token } })
         );
     }
 
     async forgotPassword(email) {
         return await this.requestHandler(() =>
-            this.api.post(`${this.endPoint}/forgot-password`, { email })
+            this.api.post(`${this.endpoint}/forgot-password`, { email })
         );
     }
 
-    async validateCode(email, code) {
+    async validateCode({ email, code }) {
         return await this.requestHandler(() =>
-            this.api.post(`${this.endPoint}/validate-code`, { email, code })
+            this.api.post(`${this.endpoint}/forgot-password-validate?code=${code}`, { email })
         );
     }
 
     async changePassword(changePasswordData) {
+        console.log(`${this.endpoint}/change-password`)
         return await this.requestHandler(() =>
-            this.api.post(`${this.endPoint}/change-password`, changePasswordData)
+            this.api.post(`${this.endpoint}/change-password`, changePasswordData)
         );
     }
 }

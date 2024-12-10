@@ -12,6 +12,7 @@ import { Messages } from 'primereact/messages';
 import { useTranslation } from "react-i18next";
 
 import ButtonLanguage from "../../components/buttonLanguage/ButtonLanguage"; 
+import PersonService from "../../services/PersonService";
 
 const Register = () => {
     const {t} = useTranslation();
@@ -56,7 +57,8 @@ const Register = () => {
         setConfirmPassword(e.target.value);
     };
 
-    const handleRegister = () => {
+    const handleRegister = async () => {
+        console.log("Botão de registro clicado");
         msgs.current.clear();
         setSubmitted(true);
 
@@ -80,18 +82,34 @@ const Register = () => {
             return;
         }
 
-        localStorage.setItem("email", email);
-        localStorage.setItem("password", password);
-        localStorage.setItem("username", username);
+        try{
+            const personData = {username, email, password};
+            const personService = new PersonService();
+            await personService.create(personData);
 
-        msgs.current.show({
-            severity: 'success',
-            summary: 'Sucesso',
-            detail: 'Registro realizado com sucesso!',
-            sticky: true,
-        });
+            msgs.current.show({
+                severity: 'success',
+                summary: 'Sucesso',
+                detail: 'Registro realizado com sucesso!',
+                sticky: true,
+            });
 
-  
+            setTimeout(() => {
+                navigate("/login");
+            }, 1500); 
+            
+        }catch(error) {
+            {
+            msgs.current.show({
+                severity: 'error',
+                summary: 'Erro',
+                detail: 'Ocorreu um erro ao registrar o usuário.',
+                sticky: true,
+            });
+        }
+    }
+
+        
         setTimeout(() => {
             navigate("/login");
         }, 1500); 

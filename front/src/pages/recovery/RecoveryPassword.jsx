@@ -10,31 +10,23 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Messages } from 'primereact/messages';
 import { useTranslation } from "react-i18next";
 
-import ButtonLanguage from "../../components/buttonLanguage/ButtonLanguage"; 
-
-
+import ButtonLanguage from "../../components/buttonLanguage/ButtonLanguage";
+import PersonService from "../../services/PersonService";
 
 const RecoveryPassword = () => {
     const msgs = useRef(null);
     const [email, setEmail] = useState("");
-    const [submit, setSubmit] = useState(false);    
+    const [submit, setSubmit] = useState(false);
     const [code, setCode] = useState("");
 
     const navigate = useNavigate();
+    const personService = new PersonService();
+    const { t } = useTranslation();
 
-    const generateOTP = () => {
-        var a = Math.floor(100000 + Math.random() * 900000);
-        a = String(a);
-        a = a.substring(0, 4);
-        console.log(a);
-        setCode(a.toString());
-        localStorage.setItem("code", code);
-    }
-    const {t} = useTranslation();
-
-    const handleRecoveryPassword = () => {
+    const handleRecoveryPassword = async () => {
         msgs.current.clear();
         setSubmit(true);
+
         if (!email) {
             msgs.current.show({
                 severity: 'error',
@@ -44,19 +36,33 @@ const RecoveryPassword = () => {
             });
             return;
         }
+
+        // Armazenar o e-mail no localStorage
+        localStorage.setItem("email", email);
+
+        msgs.current.show({
+            severity: 'success',
+            summary: 'Sucesso',
+            detail: 'Instruções de recuperação de senha enviadas para o seu e-mail!',
+            sticky: true,
+        });
+
+        try {
+            // Envia o e-mail para o backend
+            await personService.forgotPassword(email);
+        } catch (error) {
             msgs.current.show({
-                severity: 'success',
-                summary: 'Sucesso',
-                detail: 'Instruções de recuperação de senha enviadas para o seu e-mail!',
+                severity: 'error',
+                summary: 'Erro',
+                detail: 'Erro ao enviar as instruções. Tente novamente.',
                 sticky: true,
             });
-            generateOTP();
+            return;
+        }
 
-            setTimeout(() => {
-                navigate("/recovery-password/code");
-            }, 1500); 
-        
-
+        setTimeout(() => {
+            navigate("/recovery-password/code");
+        }, 1500);
     }
 
     return (
@@ -68,27 +74,28 @@ const RecoveryPassword = () => {
                 <div className="button-language">
                     <ButtonLanguage />
                 </div>
-                <div className="card-elements">      
+                <div className="card-elements">
                     <label htmlFor="email">{t('recovery-password.email')}</label>
-                    <InputText 
+                    <InputText
                         id="email"
-                        type="email" 
-                        value = {email} onChange={(e) => setEmail(e.target.value)}
-                        invalid = {submit && !email}
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        invalid={submit && !email}
                     />
                     <Button
                         className="button-recovery"
                         label={t('recovery-password.submit')}
                         onClick={handleRecoveryPassword}
                     />
-                    
+
                     <Link className="link-button-login" to="/login" >
                         <Button label={t('recovery-password.back')} />
-                    </Link> 
+                    </Link>
                 </div>
             </Card>
-           
-    </div>
+        </div>
     );
 }
+
 export default RecoveryPassword;

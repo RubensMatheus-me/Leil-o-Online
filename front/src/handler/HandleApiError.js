@@ -1,4 +1,4 @@
-export function handleApiError(error) {
+function HandleApiError(error) {
     if (error.response) {
         const { status, data } = error.response;
 
@@ -22,3 +22,4 @@ export function handleApiError(error) {
         return "Erro ao processar a solicitação. Tente novamente.";
     }
 }
+export default HandleApiError;

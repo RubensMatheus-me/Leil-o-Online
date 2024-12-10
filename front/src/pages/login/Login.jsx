@@ -29,6 +29,7 @@ const Login = () => {
     }
 
     const login = async () => {
+        console.log(user);
         msgs.current.clear();
         setSubmitted(true);
         //const emailRegistered = localStorage.getItem("email");
@@ -40,6 +41,7 @@ const Login = () => {
             let token = response.token;
             localStorage.setItem("token", token);
             localStorage.setItem("email", user.email);
+            navigate("/");
            
         }catch {
             msgs.current.show({

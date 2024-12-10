@@ -91,6 +91,19 @@
         "code" : "Código",
         "submit" : "Enviar",
         "back" : "Voltar"
+    },
+    "changePassword": {
+        "title": "Alterar Senha",
+        "email": "E-mail",
+        "newPassword": "Nova Senha",
+        "confirmPassword": "Confirmar Senha",
+        "passwordMismatch": "As senhas não coincidem.",
+        "passwordChanged": "Senha alterada com sucesso!",
+        "errorMessage": "Ocorreu um erro. Tente novamente.",
+        "submit": "Alterar Senha",
+        "back": "Voltar"
     }
+
+
     
 }

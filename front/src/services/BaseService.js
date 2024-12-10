@@ -3,7 +3,7 @@ import api from '../config/axiosConfig';
 class BaseService {
     constructor(endpoint) {
         this.api = api;
-        this.endpoint = endpoint;
+        this.endpoint = endpoint; 
     }
 
     async insert(data) {

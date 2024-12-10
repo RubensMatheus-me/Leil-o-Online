@@ -92,5 +92,16 @@
         "code" : "Code",
         "submit" : "Submit",
         "back" : "Back"
+    },
+    "changePassword": {
+        "title": "Change Password",
+        "email": "Email",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm Password",
+        "passwordMismatch": "Passwords do not match.",
+        "passwordChanged": "Password changed successfully!",
+        "errorMessage": "An error occurred. Please try again.",
+        "submit": "Change Password",
+        "back": "Back"
     }
 }

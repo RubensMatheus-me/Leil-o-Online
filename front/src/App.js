@@ -12,6 +12,7 @@ import Profile from './pages/profile/Profile';
 import CardDetails from './pages/cardDetails/CardDetails';
 import MyItems from './pages/myItems/MyItems';
 import AddProducts from './pages/addProducts/AddProducts';
+import ChangePassword from './pages/changePassword/ChangePassword';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='/register' element={<SimpleLayout><Register/></SimpleLayout>} />
           <Route path='/recovery-password' element={<SimpleLayout><RecoveryPassword/></SimpleLayout>} />
           <Route path='/recovery-password/code' element={<SimpleLayout><RecoveryCode/></SimpleLayout>} />
+          <Route path='/change-password' element={<SimpleLayout><ChangePassword /></SimpleLayout>} />
           
 
         </Routes>
