@@ -29,7 +29,15 @@
         "total-sold" : "Total vendidos:",
         "total-money" : "Receita total:",
         "auction-items" : "Itens Leiloados",
-        "add-items" : "Adicionar novos items"
+        "add-items" : "Adicionar novos items",
+        "no-items": "Nenhum item disponível",
+        "category-created": "Categoria criada com sucesso!",
+        "error-creating-category": "Erro ao criar a categoria.",
+        "create-category": "Criar Categoria",
+        "category-name": "Nome da Categoria",
+        "category-description": "Descrição da Categoria",
+        "save" : "Salvar",
+        "back" : "Voltar"
     },
 
     "profile": {

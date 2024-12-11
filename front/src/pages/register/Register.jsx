@@ -109,10 +109,6 @@ const Register = () => {
         }
     }
 
-        
-        setTimeout(() => {
-            navigate("/login");
-        }, 1500); 
     };
 
     return (

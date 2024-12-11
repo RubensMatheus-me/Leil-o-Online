@@ -3,7 +3,17 @@ import api from '../config/axiosConfig';
 class BaseService {
     constructor(endpoint) {
         this.api = api;
-        this.endpoint = endpoint; 
+        this.endpoint = endpoint;
+    }
+
+    async getAuthenticatedUser() {
+        try {
+            const response = await this.api.get('/me');
+            return response.data; 
+        } catch (error) {
+            console.error("Erro ao obter usuário autenticado:", error);
+            throw error; 
+        }
     }
 
     async insert(data) {

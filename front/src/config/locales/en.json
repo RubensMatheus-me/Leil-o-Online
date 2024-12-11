@@ -30,7 +30,15 @@
         "total-sold": "Total sold:",
         "total-money": "Total revenue:",
         "auction-items": "Auctioned items",
-        "add-items": "Add new items"
+        "add-items": "Add new items",
+        "no-items": "No items available",
+        "category-created": "Category successfully created!",
+        "error-creating-category": "Error creating the category.",
+        "create-category": "Create Category",
+        "category-name": "Category Name",
+        "category-description": "Category Description",
+        "save" : "Save",
+        "back" : "Back"
     },
 
     "profile": {

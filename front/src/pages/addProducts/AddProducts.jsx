@@ -9,7 +9,9 @@ const AddProducts = () => {
         url: '',
         type: '',
         description: '',
-        price: ''
+        price: '',
+        startDateTime: '',
+        endDateTime: ''
     });
 
     const handleChange = (e) => {
@@ -24,13 +26,9 @@ const AddProducts = () => {
         e.preventDefault();
 
         const storedItems = JSON.parse(localStorage.getItem('myItems')) || [];
-
-
         const updatedItems = [...storedItems, newCard];
 
-
         localStorage.setItem('myItems', JSON.stringify(updatedItems));
-
         navigate('/my-items');
     };
 
@@ -91,13 +89,33 @@ const AddProducts = () => {
                             onChange={handleChange}
                             required
                         />
+                    </label>
 
+                    <label>
+                        Data e Hora de Início:
+                        <input
+                            type="datetime-local"
+                            name="startDateTime"
+                            value={newCard.startDateTime}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
+
+                    <label>
+                        Data e Hora de Término:
+                        <input
+                            type="datetime-local"
+                            name="endDateTime"
+                            value={newCard.endDateTime}
+                            onChange={handleChange}
+                            required
+                        />
                     </label>
 
                     <button type="submit" className="add-product-button">Adicionar Carta</button>
                 </form>
 
-                {}
                 <div className="preview-card">
                     <h2>Prévia da Carta</h2>
                     <div className="preview-card-content">
@@ -110,6 +128,8 @@ const AddProducts = () => {
                         <p><strong>Tipo:</strong> {newCard.type || 'Tipo da Carta'}</p>
                         <p><strong>Descrição:</strong> {newCard.description || 'Descrição da Carta'}</p>
                         <p><strong>Preço:</strong> ${newCard.price || '0.00'}</p>
+                        <p><strong>Início:</strong> {newCard.startDateTime || 'Não definido'}</p>
+                        <p><strong>Término:</strong> {newCard.endDateTime || 'Não definido'}</p>
                     </div>
                 </div>
             </div>
