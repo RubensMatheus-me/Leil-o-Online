@@ -9,77 +9,62 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Messages } from 'primereact/messages';
 import CategoryService from "../../services/CategoryService"; 
+import AuctionService from "../../services/AuctionService"; 
 
 import dashboardImage from '../../components/assets/images/dashboard.png';
 
 const MyItems = () => {
-    const [myItems, setMyItems] = useState([]);
-    const [statistics, setStatistics] = useState({
-        totalItems: 0,
-        totalSold: 0,
-        totalRevenue: 0 
-    });
-
     const [showCreateCategoryDialog, setShowCreateCategoryDialog] = useState(false);
     const [categoryName, setCategoryName] = useState("");
     const [categoryDescription, setCategoryDescription] = useState("");
+    const [auctions, setAuctions] = useState([]);
     const categoryService = new CategoryService(); 
+    const auctionService = new AuctionService(); 
 
     const { t } = useTranslation();
     const msgs = useRef(null); 
 
     useEffect(() => {
-        const fetchCategories = async () => {
+        const fetchUserAuctions = async () => {
             try {
-                const categories = await categoryService.listMyCategories();
-                setMyItems(categories);
+                const userAuctions = await auctionService.getUserAuctions();
+                setAuctions(userAuctions);
             } catch (error) {
+                console.error('Erro ao carregar leilões do usuário:', error);
                 msgs.current.show({
                     severity: 'error',
                     summary: t('my-items.error'),
-                    detail: t('my-items.error-fetching-categories'),
+                    detail: t('my-items.error-loading-auctions'),
+                    sticky: true 
                 });
             }
         };
-    
-        fetchCategories();
+        fetchUserAuctions();
     }, []);
-    const handleAddNewItem = (newItem) => {
-        const updatedItems = [...myItems, newItem];
-        setMyItems(updatedItems);
-        localStorage.setItem('myItems', JSON.stringify(updatedItems));
-    };
 
     const handleCreateCategory = async () => {
-
         if (!categoryName.trim() || !categoryDescription.trim()) {
             msgs.current.show({
                 severity: 'error',
                 summary: t('my-items.error'),
                 detail: t('my-items.empty-fields'),
-                sticky: true 
+                sticky: true
             });
             return;
         }
-
+    
         try {
             const newCategory = {
                 name: categoryName,
                 description: categoryDescription,
             };
-
-
+    
             await categoryService.create(newCategory);
-
-
-            const updatedCategories = await categoryService.listAll(); // ou listMyCategories()
-            setMyItems(updatedCategories);
-
-
-            setShowCreateCategoryDialog(false);
+    
             setCategoryName("");
             setCategoryDescription("");
-
+            setShowCreateCategoryDialog(false);
+    
             msgs.current.show({
                 severity: 'success',
                 summary: t('my-items.success'),
@@ -87,7 +72,7 @@ const MyItems = () => {
                 sticky: true
             });
         } catch (error) {
-
+            console.error('Erro ao criar categoria:', error);
             msgs.current.show({
                 severity: 'error',
                 summary: t('my-items.error'),
@@ -97,13 +82,36 @@ const MyItems = () => {
         }
     };
 
+    const handleDeleteAuction = async (id) => {
+        try {
+            await auctionService.deleteAuction(id);
+            setAuctions(auctions.filter((auction) => auction.id !== id));
+            msgs.current.show({
+                severity: 'success',
+                summary: t('my-items.success'),
+                detail: t('my-items.auction-deleted'),
+                sticky: true
+            });
+        } catch (error) {
+            msgs.current.show({
+                severity: 'error',
+                summary: t('my-items.error'),
+                detail: t('my-items.error-deleting-auction'),
+                sticky: true
+            });
+        }
+    };
+
+    const handleEditAuction = (auctionId) => {
+        console.log("Editar leilão com ID:", auctionId);
+    };
+
     return (
-        <div className=''>
+        <div>
             <div className="notification">
                 <Messages className="notification-message" ref={msgs} />
             </div>
             <Card>
-                
                 <div className="my-items-container">
                     <h1>{t('my-items.title')}</h1>
                     
@@ -113,37 +121,15 @@ const MyItems = () => {
                         <h2>{t('my-items.dashboard')}</h2>
                         <div className="statistic-item">
                             <span>{t('my-items.total-items')}</span>
-                            <span>{statistics.totalItems}</span>
+                            <span>{auctions.length}</span>
                         </div>
                         <div className="statistic-item">
                             <span>{t('my-items.total-sold')}</span>
-                            <span>{statistics.totalSold}</span>
+                            <span>0</span>
                         </div>
                         <div className="statistic-item">
-                            <span>{t('my-items.total-money')} ${Number(statistics.totalRevenue).toFixed(2)}</span>
+                            <span>{t('my-items.total-money')} $0.00</span>
                         </div>
-                    </div>
-
-                    <div className="items-list">
-                        <h2>{t('my-items.auction-items')}</h2>
-                        {myItems.length > 0 ? (
-                        <ul>
-                            {myItems.map((item, index) => (
-                                <li key={index}>
-                                    <img src={item.url} alt={item.name} className="item-image" />
-                                    <div className="item-details">
-                                        <h3>{item.name}</h3>
-                                        <p><strong>Preço:</strong> ${item.price}</p>
-                                        <p><strong>Categoria:</strong> {item.type}</p>
-                                        <p><strong>Status:</strong> {item.inventoryStatus}</p>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>{t('my-items.no-items')}</p>
-                    )}
-
                     </div>
 
                     <div className="add-item">
@@ -153,6 +139,33 @@ const MyItems = () => {
                             className="create-category-button"
                             onClick={() => setShowCreateCategoryDialog(true)}
                         />
+                    </div>
+
+                    <div className="auction-list">
+                        <h3>{t('my-items.my-auctions')}</h3>
+                        {auctions.length > 0 ? (
+                            auctions.map((auction) => (
+                                <div key={auction.id} className="auction-item">
+                                    {auction.imageUrl && <img src={auction.imageUrl} alt={auction.title} className="auction-image" />}
+                                    <h4>{auction.title}</h4>
+                                    <p>{auction.description}</p>
+                                    <div className="auction-actions">
+                                        <Button
+                                            label={t('my-items.edit')}
+                                            onClick={() => handleEditAuction(auction.id)}
+                                            className="p-button-warning"
+                                        />
+                                        <Button
+                                            label={t('my-items.delete')}
+                                            onClick={() => handleDeleteAuction(auction.id)}
+                                            className="p-button-danger"
+                                        />
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p>{t('my-items.no-auctions')}</p>
+                        )}
                     </div>
 
                     <Dialog

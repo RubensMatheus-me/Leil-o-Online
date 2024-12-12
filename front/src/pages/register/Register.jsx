@@ -25,7 +25,7 @@ const Register = () => {
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [username, setUsername] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
@@ -62,7 +62,7 @@ const Register = () => {
         msgs.current.clear();
         setSubmitted(true);
 
-        if (!username || !email || !password || !confirmPassword) {
+        if (!name || !email || !password || !confirmPassword) {
             msgs.current.show({
                 severity: 'error',
                 summary: 'Erro',
@@ -83,7 +83,7 @@ const Register = () => {
         }
 
         try{
-            const personData = {username, email, password};
+            const personData = {name, email, password};
             const personService = new PersonService();
             await personService.create(personData);
 
@@ -123,10 +123,10 @@ const Register = () => {
                 <div className="card-elements">
                     <label htmlFor="username">{t('register.name')}</label>
                     <InputText
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        invalid={submitted && !username}
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        invalid={submitted && !name}
                     />
 
                     <label htmlFor="email">{t('register.email')}</label>

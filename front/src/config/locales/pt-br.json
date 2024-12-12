@@ -37,7 +37,17 @@
         "category-name": "Nome da Categoria",
         "category-description": "Descrição da Categoria",
         "save" : "Salvar",
-        "back" : "Voltar"
+        "back" : "Voltar",
+        "edit": "Editar",
+        "delete": "Excluir",
+        "my-auctions" : "Meus Leilões",
+        "no-auctions" : "Sem Items Leiloados",
+        "error" : {
+            "empty-fields": "Por favor, preencha todos os campos.",
+            "loading-auctions": "Erro ao carregar os leilões. Tente novamente mais tarde.",
+            "deleting-auction": "Erro ao excluir o leilão. Tente novamente mais tarde.",
+            "creating-category": "Erro ao criar a categoria. Tente novamente mais tarde."
+        }
     },
 
     "profile": {

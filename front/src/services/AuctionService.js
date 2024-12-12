@@ -6,9 +6,16 @@ class AuctionService extends BaseService {
         super("auction");
     }
 
+    getAuthHeaders() {
+        const token = localStorage.getItem("token");
+        return token ? { Authorization: `Bearer ${token}` } : {};
+    }
+
     async createAuction(data) {
         try {
-            const response = await this.api.post(`${this.endpoint}`, data);
+            const response = await this.api.post(`${this.endpoint}`, data, {
+                headers: this.getAuthHeaders(),
+            });
             return response.data;
         } catch (error) {
             HandleApiError(error);
@@ -16,9 +23,12 @@ class AuctionService extends BaseService {
         }
     }
 
+    // Atualizar leilão
     async updateAuction(id, data) {
         try {
-            const response = await this.api.put(`${this.endpoint}/${id}`, data);
+            const response = await this.api.put(`${this.endpoint}/${id}`, data, {
+                headers: this.getAuthHeaders(),
+            });
             return response.data;
         } catch (error) {
             HandleApiError(error);
@@ -28,7 +38,9 @@ class AuctionService extends BaseService {
 
     async deleteAuction(id) {
         try {
-            const response = await this.api.delete(`${this.endpoint}/${id}`);
+            const response = await this.api.delete(`${this.endpoint}/${id}`, {
+                headers: this.getAuthHeaders(),
+            });
             return response.data;
         } catch (error) {
             HandleApiError(error);
@@ -38,7 +50,9 @@ class AuctionService extends BaseService {
 
     async getUserAuctions() {
         try {
-            const response = await this.api.get(`${this.endpoint}/my-auctions`);
+            const response = await this.api.get(`${this.endpoint}/my-auctions`, {
+                headers: this.getAuthHeaders(),
+            });
             return response.data;
         } catch (error) {
             HandleApiError(error);
@@ -68,7 +82,9 @@ class AuctionService extends BaseService {
 
     async getAuthenticatedUser() {
         try {
-            const response = await this.api.get(`${this.endpoint}/me`);
+            const response = await this.api.get(`${this.endpoint}/me`, {
+                headers: this.getAuthHeaders(),
+            });
             return response.data;
         } catch (error) {
             HandleApiError(error);

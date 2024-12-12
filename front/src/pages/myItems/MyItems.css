@@ -97,3 +97,8 @@
     width: 100%;
     height: auto;
 }
+.auction-image {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+}

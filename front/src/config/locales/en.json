@@ -38,7 +38,17 @@
         "category-name": "Category Name",
         "category-description": "Category Description",
         "save" : "Save",
-        "back" : "Back"
+        "back" : "Back",
+        "edit" : "Edit",
+        "delete" : "Delete",
+        "my-auctions" : "My Auctions",
+        "no-auctions" : "Nothing Items Auctions",
+        "error" : {
+            "empty-fields": "Please fill in all fields.",
+            "loading-auctions": "Error loading auctions. Please try again later.",
+            "deleting-auction": "Error deleting auction. Please try again later.",
+            "creating-category": "Error creating category. Please try again later."
+        }
     },
 
     "profile": {
