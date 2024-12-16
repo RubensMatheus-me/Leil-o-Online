@@ -194,7 +194,9 @@ const AddProducts = () => {
                         />
                         <h3>{newCard.name || 'Nome da Carta'}</h3>
                         <p><strong>Tipo:</strong> {newCard.type || 'Tipo da Carta'}</p>
-                        <p><strong>Categoria:</strong> {categories.find(cat => cat.id === newCard.categoryId)?.name || 'Não definida'}</p>
+                        <p><strong>Categoria:</strong> {
+    categories.find(cat => String(cat.id) === String(newCard.categoryId))?.name || 'Não definida'
+}</p>
                         <p><strong>Descrição:</strong> {newCard.description || 'Descrição da Carta'}</p>
                         <p><strong>Preço:</strong> ${newCard.price || '0.00'}</p>
                         <p><strong>Início:</strong> {newCard.startDateTime || 'Não definido'}</p>

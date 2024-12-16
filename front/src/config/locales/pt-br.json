@@ -40,13 +40,16 @@
         "back" : "Voltar",
         "edit": "Editar",
         "delete": "Excluir",
+        "auction-deleted" : "Item deletado",
         "my-auctions" : "Meus Leilões",
         "no-auctions" : "Sem Items Leiloados",
+        "error-loading-auctions" : "Erro ao carregar leilões do usuário",
         "error" : {
             "empty-fields": "Por favor, preencha todos os campos.",
             "loading-auctions": "Erro ao carregar os leilões. Tente novamente mais tarde.",
             "deleting-auction": "Erro ao excluir o leilão. Tente novamente mais tarde.",
-            "creating-category": "Erro ao criar a categoria. Tente novamente mais tarde."
+            "creating-category": "Erro ao criar a categoria. Tente novamente mais tarde.",
+            "error-loading-auctions" : "Erro ao carregar leilões do usuário"
         }
     },
 

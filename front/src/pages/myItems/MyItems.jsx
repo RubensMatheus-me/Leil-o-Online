@@ -16,7 +16,7 @@ import dashboardImage from '../../components/assets/images/dashboard.png';
 const MyItems = () => {
     const [showCreateCategoryDialog, setShowCreateCategoryDialog] = useState(false);
     const [categoryName, setCategoryName] = useState("");
-    const [categoryDescription, setCategoryDescription] = useState("");
+    const [categoryObservation, setCategoryObservation] = useState("");
     const [auctions, setAuctions] = useState([]);
     const categoryService = new CategoryService(); 
     const auctionService = new AuctionService(); 
@@ -43,7 +43,7 @@ const MyItems = () => {
     }, []);
 
     const handleCreateCategory = async () => {
-        if (!categoryName.trim() || !categoryDescription.trim()) {
+        if (!categoryName.trim() || !categoryObservation.trim()) {
             msgs.current.show({
                 severity: 'error',
                 summary: t('my-items.error'),
@@ -56,13 +56,13 @@ const MyItems = () => {
         try {
             const newCategory = {
                 name: categoryName,
-                description: categoryDescription,
+                observation: categoryObservation,
             };
     
             await categoryService.create(newCategory);
     
             setCategoryName("");
-            setCategoryDescription("");
+            setCategoryObservation("");
             setShowCreateCategoryDialog(false);
     
             msgs.current.show({
@@ -148,7 +148,7 @@ const MyItems = () => {
                                 <div key={auction.id} className="auction-item">
                                     {auction.imageUrl && <img src={auction.imageUrl} alt={auction.title} className="auction-image" />}
                                     <h4>{auction.title}</h4>
-                                    <p>{auction.description}</p>
+                                    <p>{auction.observation}</p>
                                     <div className="auction-actions">
                                         <Button
                                             label={t('my-items.edit')}
@@ -187,8 +187,8 @@ const MyItems = () => {
                             <label htmlFor="categoryDescription">{t('my-items.category-description')}</label>
                             <InputText
                                 id="categoryDescription"
-                                value={categoryDescription}
-                                onChange={(e) => setCategoryDescription(e.target.value)}
+                                value={categoryObservation}
+                                onChange={(e) => setCategoryObservation(e.target.value)}
                             />
                         </div>
                         <div className="dialog-buttons">

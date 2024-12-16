@@ -5,6 +5,8 @@ import { classNames } from 'primereact/utils';
 import Modal from 'react-modal';
 import '../../pages/home/Home.css';
 import AuctionService from '../../services/AuctionService';
+import CategoryService from '../../services/CategoryService';
+
 
 Modal.setAppElement('#root');
 
@@ -13,20 +15,36 @@ export default function PaginationDemo() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalImage, setModalImage] = useState('');
     const auctionService = new AuctionService();
+    const categoryService = new CategoryService();
 
     useEffect(() => {
-        const fetchAuctions = async () => {
+        const fetchAuctionsWithCategories = async () => {
             try {
-                
-                const data = await auctionService.getPublicAuctions();
-                setAuctions(data);
+                const [auctionData, categoryData] = await Promise.all([
+                    auctionService.getPublicAuctions(),
+                    categoryService.listAll()
+                ]);
+    
+                console.log('Leilões:', auctionData);
+                console.log('Categorias:', categoryData);
+    
+                const enrichedAuctions = auctionData.map(auction => ({
+                    ...auction,
+                    category: categoryData.find(cat => cat.id === auction.categoryId) || null
+                }));
+    
+                console.log('Leilões com categorias:', enrichedAuctions);
+    
+                setAuctions(enrichedAuctions);
             } catch (error) {
-                console.error('Erro ao buscar leilões:', error);
+                console.error('Erro ao buscar dados:', error);
             }
         };
-
-        fetchAuctions();
+    
+        fetchAuctionsWithCategories();
     }, []);
+    
+    
 
     const openModal = (image) => {
         setModalImage(image);
@@ -55,7 +73,8 @@ export default function PaginationDemo() {
                             <div className="flex align-items-center gap-3">
                                 <span className="flex align-items-center gap-2">
                                     <i className="pi pi-tag"></i>
-                                    <span className="font-semibold">Categoria: {auction.category ? auction.category.name : 'Sem categoria'}</span>
+                                    <span className="font-semibold">Descrição: {auction.description || 'Sem descrição'}</span>
+
                                 </span>
                             </div>
                         </div>

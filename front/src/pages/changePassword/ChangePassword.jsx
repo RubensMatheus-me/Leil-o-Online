@@ -50,10 +50,6 @@ const ChangePassword = () => {
                 repeatPassword: user.repeatPassword
             });
 
-            // Logando a resposta para inspeção
-            console.log("Resposta do servidor:", response);
-
-            // Ajuste: Verifique o conteúdo da resposta (mensagem retornada pelo backend)
             if (response === "Senha alterada com sucesso!") {
                 console.log("Senha alterada com sucesso, redirecionando para login...");
 
@@ -66,8 +62,6 @@ const ChangePassword = () => {
 
                 navigate("/login");
             } else {
-                // Caso a resposta seja um erro ou mensagem inesperada
-                console.error("Erro ao alterar senha, resposta inesperada:", response);
                 msgs.current.show({
                     severity: 'error',
                     summary: 'Erro',

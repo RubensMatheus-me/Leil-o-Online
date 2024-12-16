@@ -90,7 +90,7 @@ const Register = () => {
             msgs.current.show({
                 severity: 'success',
                 summary: 'Sucesso',
-                detail: 'Registro realizado com sucesso!',
+                detail: 'Registro realizado com sucesso, Confirme no email!',
                 sticky: true,
             });
 
